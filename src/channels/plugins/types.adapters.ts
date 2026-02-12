@@ -1,5 +1,5 @@
-import type { ReplyPayload } from "../../auto-reply/types.js";
 import type { SandboxWorkspaceInfo } from "../../agents/sandbox/types.js";
+import type { ReplyPayload } from "../../auto-reply/types.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import type { GroupToolPolicyConfig } from "../../config/types.tools.js";
 import type { OutboundDeliveryResult, OutboundSendDeps } from "../../infra/outbound/deliver.js";

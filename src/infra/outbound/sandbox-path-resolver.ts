@@ -1,7 +1,7 @@
-import type { OpenClawConfig } from "../../config/config.js";
-import type { SandboxWorkspaceInfo } from "../../agents/sandbox/types.js";
-import { ensureSandboxWorkspaceForSession } from "../../agents/sandbox/context.js";
 import path from "node:path";
+import type { SandboxWorkspaceInfo } from "../../agents/sandbox/types.js";
+import type { OpenClawConfig } from "../../config/config.js";
+import { ensureSandboxWorkspaceForSession } from "../../agents/sandbox/context.js";
 
 /**
  * Generic sandbox path resolver
@@ -14,8 +14,8 @@ import path from "node:path";
  * @returns Resolved host path
  */
 export function resolveSandboxFilePath(
-    filePath: string,
-    sandboxWorkspace: SandboxWorkspaceInfo | null,
+  filePath: string,
+  sandboxWorkspace: SandboxWorkspaceInfo | null,
 ): string {
   // Non-sandbox environment, return directly
   if (!sandboxWorkspace) {
@@ -90,9 +90,9 @@ export async function getSandboxContextForSession(params: {
  * @returns Converted parameters object
  */
 export function resolveFilePathsInParams(
-    params: Record<string, unknown>,
-    sandboxWorkspace: SandboxWorkspaceInfo | null,
-    fileKeys: string[] = ["filePath", "path", "media"],
+  params: Record<string, unknown>,
+  sandboxWorkspace: SandboxWorkspaceInfo | null,
+  fileKeys: string[] = ["filePath", "path", "media"],
 ): Record<string, unknown> {
   if (!sandboxWorkspace) {
     return params;

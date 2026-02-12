@@ -1,21 +1,17 @@
 import type { AgentToolResult } from "@mariozechner/pi-agent-core";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import type { SandboxWorkspaceInfo } from "../../agents/sandbox/types.js";
 import type {
   ChannelId,
   ChannelMessageActionName,
   ChannelThreadingToolContext,
 } from "../../channels/plugins/types.js";
-import type { SandboxWorkspaceInfo } from "../../agents/sandbox/types.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import type { OutboundSendDeps } from "./deliver.js";
 import type { MessagePollResult, MessageSendResult } from "./message.js";
 import { resolveSessionAgentId } from "../../agents/agent-scope.js";
 import { assertMediaNotDataUrl, resolveSandboxedMediaSource } from "../../agents/sandbox-paths.js";
-import {
-  getSandboxContextForSession,
-  resolveFilePathsInParams,
-} from "./sandbox-path-resolver.js";
 import {
   readNumberParam,
   readStringArrayParam,
@@ -49,6 +45,7 @@ import {
 } from "./outbound-policy.js";
 import { executePollAction, executeSendAction } from "./outbound-send-service.js";
 import { ensureOutboundSessionEntry, resolveOutboundSessionRoute } from "./outbound-session.js";
+import { getSandboxContextForSession, resolveFilePathsInParams } from "./sandbox-path-resolver.js";
 import { resolveChannelTarget, type ResolvedMessagingTarget } from "./target-resolver.js";
 
 export type MessageActionRunnerGateway = {

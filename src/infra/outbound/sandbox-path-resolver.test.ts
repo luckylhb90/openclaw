@@ -34,10 +34,7 @@ describe("resolveSandboxFilePath", () => {
   });
 
   it("should handle paths with special characters", () => {
-    const result = resolveSandboxFilePath(
-      "/workspace/my file (1).txt",
-      mockSandboxWorkspace,
-    );
+    const result = resolveSandboxFilePath("/workspace/my file (1).txt", mockSandboxWorkspace);
     expect(result).toBe("/opt/openclaw/sandboxes/agent-test-123/my file (1).txt");
   });
 
@@ -166,7 +163,7 @@ describe("getSandboxContextForSession", () => {
   it("should return null for missing sessionKey", async () => {
     const result = await import("./sandbox-path-resolver.js").then((m) =>
       m.getSandboxContextForSession({
-        cfg: {} as any,
+        cfg: {} as unknown as import("../../config/config.js").OpenClawConfig,
         sessionKey: undefined,
       }),
     );
@@ -176,7 +173,7 @@ describe("getSandboxContextForSession", () => {
   it("should return null for empty sessionKey", async () => {
     const result = await import("./sandbox-path-resolver.js").then((m) =>
       m.getSandboxContextForSession({
-        cfg: {} as any,
+        cfg: {} as unknown as import("../../config/config.js").OpenClawConfig,
         sessionKey: "",
       }),
     );
